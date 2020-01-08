@@ -1,125 +1,120 @@
 ---
 layout: post
 title:  "Building an Application with Spring Boot"
-date:   2020-01-03 20:38:12 +0100
-categories: spring boot
+date:   2020-01-08 14:38:12 +0100
+categories: [java, pdf, itext]
 ---
 
 # Introduction
 
-Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can run. We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
+iText 7 Core is a commercially licensed PDF library and SDK available for Java or .NET (C#). In the PDF library, developers will find the code to program PDF documents. You can also extend the functionality of  iText 7 Core with iText add-ons.
+
+> When using iText PDF in a closed source environment, you will need to purchase an iText PDF commercial license.
 
 # Technologies used
 
-* Spring Boot 2.2.2.RELEASE
+* JDK 1.8
 * Maven 3
+* iText 7.1.9
+* jUnit 5.5.2
 
 # pom.xml
 
-Our pom.xml should look as the following one:
+To use iText we should add the `itext7-core` to our project.
 
 {% highlight xml %}
 
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-    <groupId>com.jocamav</groupId>
-    <artifactId>spring-boot-starting</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-starting</name>
-    <description>Demo project for Spring Boot</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
-</project>
+    <dependency>
+        <groupId>com.itextpdf</groupId>
+        <artifactId>itext7-core</artifactId>
+        <version>7.1.9</version>
+        <type>pom</type>
+    </dependency>
 
 {% endhighlight %}
 
-# Controller
+Also we can add the dependency for our tests.
 
-We can create a `HelloController.java` class:
+{% highlight xml %}
+
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.5.2</version>
+        <scope>test</scope>
+    </dependency>
+
+{% endhighlight %}
+
+# Create a simple paragraph
+
+To create a simple pdf file we need to create a new Document as follows.
 
 {% highlight java %}
-package com.jocamav.controller;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class HelloController {
-    @RequestMapping("/")
-    public String index() {
-        return "Greetings from Spring Boot!";
+    @Test
+    public void generateSimplePdf() throws IOException {
+        PdfDocument pdf = new PdfDocument(new PdfWriter("hello world.pdf"));
+        Document document = new Document(pdf);
+        String line = "Hello! Welcome to iTextPdf";
+        document.add(new Paragraph(line));
+        document.close();
     }
-}
-
 {% endhighlight %}
 
-# Create an Application class
+Let's take a deeper look to this example:
 
-We can create a `SpringBootStartingApplication.java` class:
+1. `PdfWriter` is an object that can write a PDF file. We pass as a parameter the path of the File.
+2. The `PdfDocument` manages the content that is added, distributes that content over different pages, and keeps track of whatever information is relevant for that content
+3. We create a `Document` that takes the `PdfDocument` as parameter. Now that we have the document object, we can forget that we're creating PDF.
+4. We create a `Paragraph` containing the text `"Hello! Welcome to iTextPdf"` and we add that paragraph to the document object.
+5. We close the `document`.
+
+When running the test we should get a PDF similar to this one:
+
+
+# Adding a List
+
+To add a List to our document we need to use the `List` object.
 
 {% highlight java %}
-package com.jocamav;
+    @Test
+    public void generateListPdf() throws IOException {
+        PdfDocument pdf = new PdfDocument(new PdfWriter("list example.pdf"));
+        Document document = new Document(pdf);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+        document.add(new Paragraph("iText is:").setFont(font));
 
-@SpringBootApplication
-public class SpringBootStartingApplication {
+        List list = new List()
+                .setSymbolIndent(12)
+                .setFont(font);
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringBootStartingApplication.class, args);
+        list.add(new ListItem("Never gonna give you up"))
+                .add(new ListItem("Never gonna let you down"))
+                .add(new ListItem("Never gonna run around and desert you"))
+                .add(new ListItem("Never gonna make you cry"))
+                .add(new ListItem("Never gonna say goodbye"))
+                .add(new ListItem("Never gonna tell a lie and hurt you"));
+
+        document.add(list);
+        document.close();
     }
-
-}
-
 {% endhighlight %}
 
-# Execute the application
+The `List` object requires some `ListItem` objects to be added. Also we can configure some parameters as the indent, symbol or font. 
+For example we can use Times Roman font creating a instance of `PdfFont` class using the `PdfFontFactory` factory class.  
 
-Execute `mvn spring-boot:run`
+> `FontConstants` class is deprecated, we should use `StandardFonts` instead.
 
 # Source Code
 
 ```
 git clone https://github.com/jocamav/spring-boot-starting
-cd spring-boot-starting
-mvn spring-boot:run
 ```
 
 # References
 
-[Spring Boot Getting Started][spring-guide]
-
-[Spring Boot Reference Documentation][spring-boot-doc]
+[iText examples][itext-examples]
 
 
-[spring-guide]: https://spring.io/guides/gs/spring-boot/
-[spring-boot-doc]: https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/
+[itext-examples]: https://itextpdf.com/en/resources/books/itext-7-examples/itext-7-examples

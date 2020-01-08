@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Building an Application with Spring Boot"
-date:   2020-01-03 20:38:12 +0100
-categories: spring boot
+date:   2020-01-08 14:38:12 +0100
+categories: [spring boot]
 ---
 
 # Introduction

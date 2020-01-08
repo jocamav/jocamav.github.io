@@ -70,7 +70,8 @@ Let's take a deeper look to this example:
 5. We close the `document`.
 
 When running the test we should get a PDF similar to this one:
-![My helpful screenshot](/assets/20200108itext/screenshot01.jpg)
+
+![Screenshot 01](/assets/20200108itext/screenshot01.jpg)
 
 # Adding a List
 
@@ -106,6 +107,72 @@ For example we can use Times Roman font creating a instance of `PdfFont` class u
 
 > `FontConstants` class is deprecated, we should use `StandardFonts` instead.
 
+
+![Screenshot 02](/assets/20200108itext/screenshot02.jpg)
+
+# Adding a simple Table
+
+To add a Table to our document we need to use the `Table` object.
+
+{% highlight java %}
+    @Test
+    public void generateTable() throws IOException {
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter("table example.pdf"));
+        Document doc = new Document(pdfDoc);
+
+        Table table = new Table(UnitValue.createPercentArray(8)).useAllAvailableWidth();
+
+        for (int i = 0; i < 16; i++)
+        {
+            table.addCell("hi");
+        }
+
+        doc.add(table);
+        doc.close();
+    }
+{% endhighlight %}
+
+A `Table` is a layout element that represents data in a two-dimensional grid. It is filled with cells, ordered in rows and columns.
+Using `UnitValue` and `useAllAvailableWidth()` we can define a table of 8 columns using all available width of the document.
+
+With `addCell` method we can add rows to the table till filling all the available columns.
+
+![Screenshot 03](/assets/20200108itext/screenshot03.jpg)
+
+# Adding a Table with format and background
+
+We can use the classes `Cell` and `PdfFont` in order to define the format of the cell. 
+
+{% highlight java %}
+    @Test
+    public void tableWithBackGround() throws IOException {
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter("table with Background.pdf"));
+        Document doc = new Document(pdfDoc);
+
+        Table table;
+        Cell cell;
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        table = new Table(UnitValue.createPercentArray(16)).useAllAvailableWidth();
+        for (int aw = 0; aw < 16; aw++) {
+            cell = new Cell().add(new Paragraph("hi").setFont(font).setFontColor(ColorConstants.WHITE));
+            cell.setBackgroundColor(ColorConstants.BLUE);
+            cell.setBorder(Border.NO_BORDER);
+            cell.setTextAlignment(TextAlignment.CENTER);
+            table.addCell(cell);
+        }
+        doc.add(table);
+
+        doc.close();
+    }
+{% endhighlight %}
+
+We can set the font to a `Paragraph` object and assigning this paragraph to the cell instead of using a String. For the cell style we can define some properties as:
+* Background
+* Border
+* Alignment of the text
+
+![Screenshot 04](/assets/20200108itext/screenshot04.jpg)
+
 # Source Code
 
 ```
@@ -115,6 +182,5 @@ git clone https://github.com/jocamav/spring-boot-starting
 # References
 
 [iText examples][itext-examples]
-
 
 [itext-examples]: https://itextpdf.com/en/resources/books/itext-7-examples/itext-7-examples

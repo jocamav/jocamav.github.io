@@ -108,7 +108,7 @@ For example we can use Times Roman font creating a instance of `PdfFont` class u
 > `FontConstants` class is deprecated, we should use `StandardFonts` instead.
 
 
-![Screenshot 02](/assets/20200108itext/screenshot02b.jpg)
+![Screenshot 02](/assets/20200108itext/screenshot02.jpg)
 
 # Adding a simple Table
 

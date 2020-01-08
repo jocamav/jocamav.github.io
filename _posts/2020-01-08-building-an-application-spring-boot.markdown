@@ -9,12 +9,12 @@ categories: spring boot
 
 Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can run. We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
 
-## Technologies used
+# Technologies used
 
 * Spring Boot 2.2.2.RELEASE
 * Maven 3
 
-## pom.xml
+# pom.xml
 
 Our pom.xml should look as the following one:
 
@@ -61,7 +61,7 @@ Our pom.xml should look as the following one:
 
 {% endhighlight %}
 
-## Controller
+# Controller
 
 We can create a `HelloController.java` class:
 
@@ -81,9 +81,9 @@ public class HelloController {
 
 {% endhighlight %}
 
-## Create an Application class
+# Create an Application class
 
-We can create a `HelloController.java` class:
+We can create a `SpringBootStartingApplication.java` class:
 
 {% highlight java %}
 package com.jocamav;
@@ -102,13 +102,22 @@ public class SpringBootStartingApplication {
 
 {% endhighlight %}
 
-## Execute the application
+# Execute the application
 
 Execute `mvn spring-boot:run`
 
-## References
+# Source Code
+
+```
+git clone https://github.com/jocamav/spring-boot-starting
+cd spring-boot-starting
+mvn spring-boot:run
+```
+
+# References
 
 [Spring Boot Getting Started][spring-guide]
+
 [Spring Boot Reference Documentation][spring-boot-doc]
 
 

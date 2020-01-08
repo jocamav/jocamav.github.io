@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Building an Application with Spring Boot"
+title:  "Working with PDF in Java"
 date:   2020-01-08 14:38:12 +0100
 categories: [java, pdf, itext]
 ---
@@ -70,7 +70,7 @@ Let's take a deeper look to this example:
 5. We close the `document`.
 
 When running the test we should get a PDF similar to this one:
-
+![My helpful screenshot](/assets/20200108itext/screenshot01.jpg)
 
 # Adding a List
 

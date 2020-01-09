@@ -173,6 +173,58 @@ We can set the font to a `Paragraph` object and assigning this paragraph to the 
 
 ![Screenshot 04](/assets/20200108itext/screenshot04.jpg)
 
+
+# Adding a Table with custom header
+
+We can use the classes `Cell` and `PdfFont` in order to define the format of the cell. 
+
+{% highlight java %}
+    @Test
+    public void tableWithHeaderAndFormat() throws IOException {
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter("table with header.pdf"));
+        Document doc = new Document(pdfDoc);
+
+        Table table = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
+
+        addRowHeaderToTable(table);
+        addRowsToTable(table, 5);
+        doc.add(table);
+
+        doc.close();
+    }
+{% endhighlight %}
+
+Here it is the method to generate the Header row:
+
+{% highlight java %}
+    private void addRowHeaderToTable(Table table) throws IOException {
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        Stream.of("column header 1", "column header 2", "column header 3")
+                .forEach(columnTitle -> {
+                    Cell header = new Cell();
+                    header.add(new Paragraph(columnTitle).setFont(font).setFontColor(ColorConstants.WHITE));
+                    header.setBackgroundColor(ColorConstants.LIGHT_GRAY);
+                    header.setBorder(new SolidBorder(ColorConstants.BLUE, 1));
+                    table.addCell(header);
+                });
+    }
+{% endhighlight %}
+
+And also the method to generate some mock data for the rows.
+
+{% highlight java %}
+    private void addRowsToTable(Table table, int numberOfRows) {
+        for (int i = 0; i < numberOfRows; i++) {
+            for (int j = 0; j < table.getNumberOfColumns(); j++) {
+                table.addCell(String.format("Row [%d] Column [%d]", i + 1, j + 1));
+            }
+        }
+    }
+{% endhighlight %}
+
+
+![Screenshot 05](/assets/20200108itext/screenshot05.jpg)
+
 # Source Code
 
 ```

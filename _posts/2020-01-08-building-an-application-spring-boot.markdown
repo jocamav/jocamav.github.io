@@ -2,7 +2,7 @@
 layout: post
 title:  "Building an Application with Spring Boot"
 date:   2020-01-08 14:38:12 +0100
-categories: [spring-boot, spring]
+categories: [spring-boot]
 ---
 
 # Introduction

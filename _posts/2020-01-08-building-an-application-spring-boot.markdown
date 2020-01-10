@@ -224,7 +224,7 @@ Greetings from Spring Boot!
 # Source Code
 
 ![Github Logo][github-logo]
-[GitHub Project](https://github.com/jocamav/tutorials/tree/master/itext-pdf)
+[GitHub Project](https://github.com/jocamav/tutorials/tree/master/spring-boot-start)
 
 ```
 git clone https://github.com/jocamav/tutorials.git

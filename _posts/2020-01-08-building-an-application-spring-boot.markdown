@@ -242,3 +242,4 @@ mvn spring-boot:run
 
 [spring-guide]: https://spring.io/guides/gs/spring-boot/
 [spring-boot-doc]: https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/
+[github-logo]: /assets/logos/github-mark-32.png

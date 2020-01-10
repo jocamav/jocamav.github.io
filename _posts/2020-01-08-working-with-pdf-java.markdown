@@ -232,6 +232,9 @@ Creating a table with a header with grey brackground, blue thick border and whit
 
 # Source Code
 
+![Github Logo][github-logo]
+[GitHub Project](https://github.com/jocamav/tutorials/tree/master/itext-pdf)
+
 ```
 git clone https://github.com/jocamav/spring-boot-starting
 ```
@@ -241,3 +244,4 @@ git clone https://github.com/jocamav/spring-boot-starting
 [iText examples][itext-examples]
 
 [itext-examples]: https://itextpdf.com/en/resources/books/itext-7-examples/itext-7-examples
+[github-logo]: /assets/Logos/github-mark-64.png

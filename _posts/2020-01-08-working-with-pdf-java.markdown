@@ -244,4 +244,4 @@ git clone https://github.com/jocamav/spring-boot-starting
 [iText examples][itext-examples]
 
 [itext-examples]: https://itextpdf.com/en/resources/books/itext-7-examples/itext-7-examples
-[github-logo]: /assets/Logos/github-mark-64.png
+[github-logo]: /assets/logos/github-mark-64.png

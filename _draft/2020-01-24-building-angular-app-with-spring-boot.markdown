@@ -124,9 +124,7 @@ Now it's looking a bit better with a neat blue color.
 
 ![Screenshot 04](/assets/20200113angular/screenshot04.png)
 
-# Creating a new component
-
-With Angular Cli is very easy to create a new component
+# Spring project
 
 
 

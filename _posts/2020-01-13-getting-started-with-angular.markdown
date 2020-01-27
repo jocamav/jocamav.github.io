@@ -275,3 +275,4 @@ ng serve -o
 [angular-doc]: https://angular.io/docs
 [angular-setup]: https://angular.io/guide/setup-local
 [angular-tutorial]: https://angular.io/tutorial
+[github-logo]: /assets/logos/github-mark-32.png

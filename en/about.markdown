@@ -16,11 +16,12 @@ Another thing I learn with the past of the years is there's no such thing as THI
 different needs...different ways of providing the solution. My motto? **It depends...**
 
 
-# ¿Por qué este Blog?
+# Why the Blog?
 
-Siempre me ha encantado compartir mis experiencias con mis compañeros, ¿Por qué no hacerlo también con el resto del mundo? 
-Espero que de alguna manera os resulte útil y os ayude en vuestra vida profesional.
+I've always enjoyed sharing my experiences with my colleagues, why not to do it with the rest of the world too?
+I hope somehow this blog will be useful and it will help you with you professional career. 
 
-# Contacto
 
-Me podéis encontrar en Twitter, Github o Linkedin. 
+# Contact
+
+Feel free to follow me on Twitter, Github or contact me on Linkedin. 

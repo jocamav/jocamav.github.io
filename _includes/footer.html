@@ -1,59 +1,44 @@
-<footer class="site-footer h-card">
-    <data class="u-url" href="{{ "
-    /" | relative_url }}"></data>
 
-    <div class="wrapper">
+<!-- Footer-->
+<footer class="bg-light pt-5 pb-3">
+    <div class="container">
 
-        <h2 class="footer-heading">{{ site.title | escape }}</h2>
-
-        <div class="footer-col-wrapper">
-            <div class="footer-col footer-col-1">
-                <ul class="contact-list">
-                    <li class="p-name">
-                        {%- if site.author -%}
-                        {{ site.author | escape }}
-                        {%- else -%}
-                        {{ site.title | escape }}
-                        {%- endif -%}
-                    </li>
-                    {%- if site.email -%}
-                    <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-                    {%- endif -%}
-                </ul>
-            </div>
-
-            <div class="footer-col footer-col-2">
-                {%- include social.html -%}
-            </div>
-
-            <div class="footer-col footer-col-3">
-                <p>
-                    {% assign posts=site.posts | where:"lang-ref", page.lang-ref | sort: 'lang' %}
-                    {% if posts.size == 0 %}
-                    {% assign posts=site.pages | where:"lang-ref", page.lang-ref | sort: 'lang' %}
-                    {% endif %}
-                    {% if posts.size > 1 %}
-                    <footer class="lang-options">
-                        <em>{{ site.data.i18n[page.lang]['differentLanguage'] }}</em>
-                        <ul class="social-media-list">
-                            {% for post in posts %}
-                            {% if post.lang != page.lang %}
-                            <li>
-                                <a href="{{ site.base-url }}{{ post.url }}" class="{{ post.lang }}"
-                                   title="View in {{post.lang}}">
-                                    <span>{{ site.data.languages[post.lang].icon }}</span> {{
-                                    site.data.languages[post.lang].label }}
-                                </a>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </footer>
-                    {% endif %}
-                </p>
-            </div>
+        <div class="social d-flex justify-content-center">
+            <a class="mx-3 social-link" href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}" target="_blank"><i class="fa fa-twitter fa-3x mb-3 text-muted"></i></a>
+            <a class="mx-3 social-link" href="https://github.com/{{ site.github_username| cgi_escape | escape }}" target="_blank"><i class="fa fa-github fa-3x mb-3 text-muted"></i></a>
+            <a class="mx-3 social-link" href="https://www.linkedin.com/in/{{ site.linkedin_username| cgi_escape | escape }}" target="_blank"><i class="fa fa-linkedin fa-3x mb-3 text-muted"></i></a>
         </div>
+        <hr>
 
+        <div class="small text-right text-muted">
+
+            {% assign posts=site.posts | where:"lang-ref", page.lang-ref | sort: 'lang' %}
+            {% if posts.size == 0 %}
+            {% assign posts=site.pages | where:"lang-ref", page.lang-ref | sort: 'lang' %}
+            {% endif %}
+            {% if posts.size > 1 %}
+            <footer class="lang-options">
+                {% for post in posts %}
+                    {% if post.lang != page.lang %}
+                        <a href="{{ site.base-url }}{{ post.url }}" class="mx-2 {{ post.lang }}"
+                           title="View in {{post.lang}}">
+                            <span>{{ site.data.languages[post.lang].icon }}</span>
+                            <span class="ml-1">{{site.data.languages[post.lang].label }}</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </footer>
+            {% endif %}
+        </div>
     </div>
-
 </footer>
+
+<!-- Bootstrap core JS-->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<!-- Core theme JS-->
+<script src="{{ "/assets/js/scripts.js" | relative_url }}"></script>

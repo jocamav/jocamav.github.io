@@ -1,19 +1,26 @@
 ---
 layout: page
-title: About
+title: About me
 lang: en
 lang-ref: about
+description: José Carlos Martínez Vega - Desarrollador de Software
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+I'm José Carlos Martínez. I've been working as Software Developer since 2007. Since then I've been working using Spring Framework.
+Lately I've been lucky to develop some projects in Angular too. 
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+Agile, TDD, Clean Code, Extreme Programming...I admit I was a bit skeptical in the beginning, but the experience taught me these concepts 
+work for once reason.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+Another thing I learn with the past of the years is there's no such thing as THIS IS THE WAY of doing the things. Different projects, 
+different needs...different ways of providing the solution. My motto? **It depends...**
 
 
-[jekyll-organization]: https://github.com/jekyll
+# ¿Por qué este Blog?
+
+Siempre me ha encantado compartir mis experiencias con mis compañeros, ¿Por qué no hacerlo también con el resto del mundo? 
+Espero que de alguna manera os resulte útil y os ayude en vuestra vida profesional.
+
+# Contacto
+
+Me podéis encontrar en Twitter, Github o Linkedin. 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Building an Application with Spring Boot"
+author:  "José Carlos Martínez"
 lang: en
 lang-ref: building-an-application-with-spring-boot
 date:   2021-01-15 14:38:12 +0100

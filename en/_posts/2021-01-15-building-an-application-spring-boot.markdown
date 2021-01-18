@@ -10,11 +10,16 @@ categories: [spring-boot]
 
 # Introduction
 
-Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can run. We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
+Spring Boot can help you a lot to create Spring based application in a very simple way with almost no configuration. According 
+the official documentation of Spring Boot:
+
+>Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can run. 
+We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss. 
+Most Spring Boot applications need very little Spring configuration.
 
 # Technologies used
 
-* Spring Boot 2.2.2.RELEASE
+* Spring Boot 2.4.1
 * Maven 3
 
 # Maven Installation
@@ -22,7 +27,7 @@ Spring Boot makes it easy to create stand-alone, production-grade Spring-based A
 Spring Boot is compatible with Apache Maven 3.3 or above.
 
 Spring Boot dependencies use the `org.springframework.boot groupId`. Typically, your Maven POM file inherits from 
-the `spring-boot-starter-parent` project and declares dependencies to one or more [Starters](https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/using-spring-boot.html#using-boot-starter). 
+the `spring-boot-starter-parent` project and declares dependencies to one or more [Starters](https://docs.spring.io/spring-boot/docs/2.4.1/reference/html/using-spring-boot.html#using-boot-starter). 
 So the first thing is to include `spring-boot-starter-parent` to our project.
 
 {% highlight xml %}
@@ -30,7 +35,7 @@ So the first thing is to include `spring-boot-starter-parent` to our project.
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -71,7 +76,7 @@ to build RESTful applications based on Spring MVC.
 
 > Spring Boot uses Tomcat as the default embedded container
 
-Our final pom.xml file should look similar to this one.
+Our final `pom.xml` file should look similar to this one.
 
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
@@ -81,7 +86,7 @@ Our final pom.xml file should look similar to this one.
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jocamav</groupId>
@@ -181,8 +186,8 @@ our application, starting Spring, which, in turn, starts the auto-configured Tom
 class (`SpringBootStartingApplication.class` in our example) as an argument to the run method to tell `SpringApplication` which 
 is the primary Spring component.
 
-Did you notice that there was not a single line of XML? There is no web.xml file, either. This web application is 100% pure 
-Java and you did not have to deal with configuring any plumbing or infrastructure.
+Did you notice that there was not a single line of XML? There is no `web.xml` file, either. This web application **is 100% pure 
+Java** and you did not have to deal with configuring any plumbing or infrastructure.
 
 
 # Execute the application
@@ -204,18 +209,18 @@ You should see in the logst the application is up and running in the port 8080.
  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
   '  |____| .__|_| |_|_| |_\__, | / / / /
  =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v2.2.2.RELEASE)
+ :: Spring Boot ::                (v2.4.1)
 
-2020-01-10 17:05:13.255  INFO 13324 --- [           main] com.jocamav.SpringBootStartApplication   : Starting SpringBootStartApplication on **** with PID 13324
-2020-01-10 17:05:13.258  INFO 13324 --- [           main] com.jocamav.SpringBootStartApplication   : No active profile set, falling back to default profiles: default
-2020-01-10 17:05:14.039  INFO 13324 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-01-10 17:05:14.045  INFO 13324 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-10 17:05:14.045  INFO 13324 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
-2020-01-10 17:05:14.128  INFO 13324 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-10 17:05:14.128  INFO 13324 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 835 ms
-2020-01-10 17:05:14.252  INFO 13324 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-10 17:05:14.390  INFO 13324 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-01-10 17:05:14.392  INFO 13324 --- [           main] com.jocamav.SpringBootStartApplication   : Started SpringBootStartApplication in 1.479 seconds (JVM running for 2.258)
+2021-01-18 20:42:44.971  INFO 37544 --- [           main] com.jocamav.SpringBootStartApplication   : Starting SpringBootStartApplication using Java 1.8.0_231 on Joses-MacBook-Pro.local with PID 37544 (/Users/carlos/Workspace/tutorials/spring-boot-start/target/classes started by carlos in /Users/carlos/Workspace/tutorials/spring-boot-start)
+2021-01-18 20:42:44.975  INFO 37544 --- [           main] com.jocamav.SpringBootStartApplication   : No active profile set, falling back to default profiles: default
+2021-01-18 20:42:45.851  INFO 37544 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-18 20:42:45.860  INFO 37544 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-18 20:42:45.860  INFO 37544 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-18 20:42:45.915  INFO 37544 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-18 20:42:45.915  INFO 37544 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 890 ms
+2021-01-18 20:42:46.091  INFO 37544 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-18 20:42:46.266  INFO 37544 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-18 20:42:46.277  INFO 37544 --- [           main] com.jocamav.SpringBootStartApplication   : Started SpringBootStartApplication in 1.662 seconds (JVM running for 2.319)
 ```
 
 To test it open in the browser the URL `http://localhost:8080/` and you should see the greeting message in the browser.
@@ -231,7 +236,7 @@ Greetings from Spring Boot!
 
 ```
 git clone https://github.com/jocamav/tutorials.git
-cd spring-boot-start
+cd tutorials/spring-boot-start
 mvn spring-boot:run
 ```
 
@@ -244,5 +249,5 @@ mvn spring-boot:run
 
 
 [spring-guide]: https://spring.io/guides/gs/spring-boot/
-[spring-boot-doc]: https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/
+[spring-boot-doc]: https://docs.spring.io/spring-boot/docs/2.4.1/reference/html/
 [github-logo]: /assets/logos/github-mark-32.png

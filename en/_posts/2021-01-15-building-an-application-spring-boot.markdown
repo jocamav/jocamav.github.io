@@ -9,7 +9,6 @@ categories: [spring-boot]
 ---
 
 # Introduction
-
 Spring Boot can help you a lot to create Spring based application in a very simple way with almost no configuration. According 
 the official documentation of Spring Boot:
 
@@ -202,26 +201,9 @@ mvn package && java -jar target/spring-boot-start-0.0.1-SNAPSHOT.jar
 
 You should see in the logst the application is up and running in the port 8080.
 
-```
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v2.4.1)
 
-2021-01-18 20:42:44.971  INFO 37544 --- [           main] com.jocamav.SpringBootStartApplication   : Starting SpringBootStartApplication using Java 1.8.0_231 on Joses-MacBook-Pro.local with PID 37544 (/Users/carlos/Workspace/tutorials/spring-boot-start/target/classes started by carlos in /Users/carlos/Workspace/tutorials/spring-boot-start)
-2021-01-18 20:42:44.975  INFO 37544 --- [           main] com.jocamav.SpringBootStartApplication   : No active profile set, falling back to default profiles: default
-2021-01-18 20:42:45.851  INFO 37544 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2021-01-18 20:42:45.860  INFO 37544 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2021-01-18 20:42:45.860  INFO 37544 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
-2021-01-18 20:42:45.915  INFO 37544 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2021-01-18 20:42:45.915  INFO 37544 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 890 ms
-2021-01-18 20:42:46.091  INFO 37544 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2021-01-18 20:42:46.266  INFO 37544 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2021-01-18 20:42:46.277  INFO 37544 --- [           main] com.jocamav.SpringBootStartApplication   : Started SpringBootStartApplication in 1.662 seconds (JVM running for 2.319)
-```
+![Screenshot 01](/assets/img/20210115springboot/screenshot01.png)
+
 
 To test it open in the browser the URL `http://localhost:8080/` and you should see the greeting message in the browser.
 
@@ -251,3 +233,4 @@ mvn spring-boot:run
 [spring-guide]: https://spring.io/guides/gs/spring-boot/
 [spring-boot-doc]: https://docs.spring.io/spring-boot/docs/2.4.1/reference/html/
 [github-logo]: /assets/logos/github-mark-32.png
+[spring-logo]: /assets/logos/spring.svg

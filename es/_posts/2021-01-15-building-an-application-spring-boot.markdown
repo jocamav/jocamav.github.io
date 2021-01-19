@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Creando una aplicación con Spring Boot"
+title:  Creando una aplicación con Spring Boot"
 author:  "José Carlos Martínez"
 lang: es
 lang-ref: building-an-application-with-spring-boot
@@ -8,35 +8,39 @@ date:   2021-01-15 14:38:12 +0100
 categories: [spring-boot]
 ---
 
-# Introduction
+# Introducción
+Spring Boot facilita mucho el trabajo para crear una aplicación basada en Spring de una manera muy sencilla sin apenas configuración.
+Esta es la introducción en la documentación oficial de Spring Boot:
 
-Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can run. We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
+>Spring Boot hace fácil crear aplicaciones stand-alone listas para ejecutar en Producción. Tomamos una visión obstinada de la plataforma Spring 
+y las bibliotecas de terceros para que puedas empezar a trabajar sin muchos problemas. La mayoría de las aplicaciones en Spring Boot
+necesitan muy poca configuración.
 
-# Technologies used
+# Tecnologías usadas
 
-* Spring Boot 2.2.2.RELEASE
+* Spring Boot 2.4.1
 * Maven 3
 
-# Maven Installation
+# Instalación con Maven
 
-Spring Boot is compatible with Apache Maven 3.3 or above.
+Spring Boot es complatible con Apache Maven 3.3 or versiones superiores.
 
-Spring Boot dependencies use the `org.springframework.boot groupId`. Typically, your Maven POM file inherits from 
-the `spring-boot-starter-parent` project and declares dependencies to one or more [Starters](https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/using-spring-boot.html#using-boot-starter). 
-So the first thing is to include `spring-boot-starter-parent` to our project.
+Las dependencias de Spring Boot utilizan el groupId `org.springframework.boot`. Tradicionalmente, tu fichero POM de maven 
+hereda de el proyecto `spring-boot-starter-parent` y declara las dependencias necesarias de uno o más [Starters](https://docs.spring.io/spring-boot/docs/2.4.1/reference/html/using-spring-boot.html#using-boot-starter). 
+Así que lo primero es incluir la dependencia `spring-boot-starter-parent` a nuestro proyecto.
 
 {% highlight xml %}
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
 {% endhighlight %}
 
-Spring Boot also provides an optional Maven plugin to create executable jars.
+Spring Boot también ofrece un plugin opcional de Maven para crear jars ejecutables.
 
 {% highlight xml %}
 
@@ -51,14 +55,14 @@ Spring Boot also provides an optional Maven plugin to create executable jars.
     
 {% endhighlight %}
 
-This plugin provides many convenient features:
+Este plugin ofrece funcionalidades muy interesantes:
 
-* It collects all the jars on the classpath and builds a single, runnable `jar` file , which makes it more convenient to execute and transport your service.
-* It searches for the `public static void main()` method to flag as a runnable class.
-* It provides a built-in dependency resolver that sets the version number to match Spring Boot dependencies. You can override any version you wish, but it will default to Boot’s chosen set of versions.
+* Recopila todos los ficheros jars del classpath y los recopila en un único fichero `jar` ejecutable. Esto hace que tu servicio sea sencillo de exportar y ejectuar.
+* Busca el método `public static void main()` para establecer la clase como ejecutable.
+* Resuelve las dependencias para establecer el número de versión correcta que se coresponda con las dependencias de Spring Boot. Puedes sobreescribir cualquiera de estas dependencias, pero deberás de tener cuidado con las versiones por defecto.
 
-For this example we are going to build a basic REST controller. We need to and an extra dependency to include another `Starter`
-to build RESTful applications based on Spring MVC.
+Para este ejemplo vamos a implementar un controlador REST muy básico. Para ello, necesitamos incluir un `Starter` adicional
+para desarrollas aplicaciones RESTful basadas en Spring MVC..
 
 {% highlight xml %}
 
@@ -69,9 +73,9 @@ to build RESTful applications based on Spring MVC.
     
 {% endhighlight %}
 
-> Spring Boot uses Tomcat as the default embedded container
+> Spring Boot utilza Tomcat como contentedor embebido por defecto
 
-Our final pom.xml file should look similar to this one.
+El fichero `pom.xml` completo deberá de ser similar a este.
 
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
@@ -81,7 +85,7 @@ Our final pom.xml file should look similar to this one.
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jocamav</groupId>
@@ -114,9 +118,9 @@ Our final pom.xml file should look similar to this one.
     
 {% endhighlight %}
 
-# Create a Controller
+# Crear un Controlador
 
-We can create a `HelloController.java` to return a simple `"Greetings from Spring Boot!"` message:
+Podemos crear una clase `HelloController.java` para devolver un simple mensaje `"Greetings from Spring Boot!"`:
 
 {% highlight java %}
 package com.jocamav.controller;
@@ -134,19 +138,21 @@ public class HelloController {
 
 {% endhighlight %}
 
-Let's take a deeper look to all the annotations we have included into this Controller:
+Echemos un vistazo más detenidamente a todas las anotaciones que hemos incluído en este Controlador:
 
-* The class is flagged as a `@RestController`, meaning it’s ready for use by Spring MVC to handle web requests.
-* `@RequestMapping` maps `/` requests to the `index()` method
+* La clase está anotada `@RestController`. Esto significa que la clase está lista para ser utilizada por Spring MVC para recibir peticiones web.
+* `@RequestMapping` mapea peticiones a `/` al método `index()`
 
-When invoked from a browser or using curl on the command line, the method returns pure text. That’s because `@RestController` combines `@Controller` and `@ResponseBody`, two annotations that results in web requests returning data rather than a view.
+Cuando se invoca a la URL desde el navegador o mediante curl desde la línea de comandos, el método devuelve texto puro. Esto
+es debido a que `@RestController` combina `@Controller` y `@ResponseBody`, dos anotaciones que combinadas hacen que
+las peticiones web devuelvan datos serializados en vez de una vista..
 
-# Create an Application class
+# Crear una clase Aplicación
 
-First we will create a a `SpringBootStartApplication.java` class
+Primero vamos a crear una clase `SpringBootStartApplication.java`
 
-The final part of our application is to create a class `SpringBootStartApplication.java` with a `main` method. This is just a standard method that follows the Java convention 
-for an application entry point. 
+Para nuestra aplicación, nuestra meta es crear una clase `SpringBootStartApplication.java` con un método `main`. 
+Esto es simplemente el modo estándar acorde a la convención de Java como "punto de entrada" para una aplicación. 
 
 
 {% highlight java %}
@@ -166,77 +172,60 @@ public class SpringBootStartingApplication {
 
 {% endhighlight %}
 
-It's recommended that you locate your main application class in a root package above other classes. The `@SpringBootApplication`
-annotation is often placed on your main class, and it implicitly adds all of the following:
+Se recomienda poner la principal clase de la aplicación en el directorio raíz por encima del resto de las clases. La anotación 
+`@SpringBootApplication` se incluye habitualmente en la clase principal y añade de manera implicita::
 
-* `@Configuration`: Tags the class as a source of bean definitions for the application context.
-* `@EnableAutoConfiguration`: Tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings. 
-For example, if spring-webmvc is on the classpath, this annotation flags the application as a web application and activates key behaviors, 
-such as setting up a DispatcherServlet.
-* `@ComponentScan`: Tells Spring to look for other components, configurations, and services in the `com.jocamav` package, 
-letting it find the controllers.
+* `@Configuration`: Marca la clase como fuente de declaración de beans para el contexto de Spring.
+* `@EnableAutoConfiguration`: Indica a Spring Boot que debe añadir beans según la configuración del classpath settings, otros beans y distintas propiedades y configuraciones. 
+Por ejemplo, si spring-webmvc esta en el classpath, esta anotación marca la aplicación como una aplicación web y activa ciertos aspectos clave,
+ como la configuración de un DispatcherServlet.
+* `@ComponentScan`: Indica a Spring que debe buscar otros componentes, clases de configuración u servicios en el paquete `com.jocamav`, 
+de manera que puede encontrar los distintos controladores que implementemos.
 
-Our `main` method delegates to Spring Boot’s `SpringApplication` class by calling `run` to launch an application. SpringApplication bootstraps 
-our application, starting Spring, which, in turn, starts the auto-configured Tomcat web server. We need to pass the 
-class (`SpringBootStartingApplication.class` in our example) as an argument to the run method to tell `SpringApplication` which 
-is the primary Spring component.
+Nuestro método `main` delega a la clase `SpringApplication`de Spring Boot ejecutando el método `run` para iniciar la aplicación. 
+SpringApplication se encarga del resto, arrancando Spring, quien a su vez inicia un servidor Tomcat ya configurao. 
+necesitamos pasar la clase (`SpringBootStartingApplication.class` en nuestro ejemplo) como argumento al método `run` 
+para indicar a `SpringApplication` cual es el componente principal de Spring..
 
-Did you notice that there was not a single line of XML? There is no web.xml file, either. This web application is 100% pure 
-Java and you did not have to deal with configuring any plumbing or infrastructure.
+Te has dado cuenta que no hay ningún fichero XML? Tampoco el clásico fichero `web.xml`. Esta aplicación **es 100% puro 
+Java** sin necesidad de configurar practicamente nada ni ninguna infraestructura.
 
 
-# Execute the application
+# Ejecutar la aplicación
 
-Execute `mvn spring-boot:run`
+Ejecuta desde la línea de comandos `mvn spring-boot:run`
 
-Also you can build an executable jar and execute the application as follows:
+También puedes crear un jar ejecutable y ejecutar la aplicación de la siguiente manera:
 
 ```
 mvn package && java -jar target/spring-boot-start-0.0.1-SNAPSHOT.jar
 ```
 
-You should see in the logst the application is up and running in the port 8080.
+Si todo va bien, deberías de ver que la aplicación se está ejecutando correctamente en el puerto 8080.
 
-```
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v2.2.2.RELEASE)
 
-2020-01-10 17:05:13.255  INFO 13324 --- [           main] com.jocamav.SpringBootStartApplication   : Starting SpringBootStartApplication on **** with PID 13324
-2020-01-10 17:05:13.258  INFO 13324 --- [           main] com.jocamav.SpringBootStartApplication   : No active profile set, falling back to default profiles: default
-2020-01-10 17:05:14.039  INFO 13324 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-01-10 17:05:14.045  INFO 13324 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-10 17:05:14.045  INFO 13324 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
-2020-01-10 17:05:14.128  INFO 13324 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-10 17:05:14.128  INFO 13324 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 835 ms
-2020-01-10 17:05:14.252  INFO 13324 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-10 17:05:14.390  INFO 13324 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-01-10 17:05:14.392  INFO 13324 --- [           main] com.jocamav.SpringBootStartApplication   : Started SpringBootStartApplication in 1.479 seconds (JVM running for 2.258)
-```
+![Screenshot 01](/assets/img/20210115springboot/screenshot01.png)
 
-To test it open in the browser the URL `http://localhost:8080/` and you should see the greeting message in the browser.
+
+Para probar, abre en el navegador la URL `http://localhost:8080/` y deberías de ver el mensaje en el navegador.
 
 ```
 Greetings from Spring Boot!
 ```
 
-# Source Code
+# Código fuente
 
 ![Github Logo][github-logo]
 [GitHub Project](https://github.com/jocamav/tutorials/tree/master/spring-boot-start)
 
 ```
 git clone https://github.com/jocamav/tutorials.git
-cd spring-boot-start
+cd tutorials/spring-boot-start
 mvn spring-boot:run
 ```
 
 
-# References
+# Referencias
 
 [Spring Boot Getting Started][spring-guide]
 
@@ -244,5 +233,6 @@ mvn spring-boot:run
 
 
 [spring-guide]: https://spring.io/guides/gs/spring-boot/
-[spring-boot-doc]: https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/
+[spring-boot-doc]: https://docs.spring.io/spring-boot/docs/2.4.1/reference/html/
 [github-logo]: /assets/logos/github-mark-32.png
+[spring-logo]: /assets/logos/spring.svg

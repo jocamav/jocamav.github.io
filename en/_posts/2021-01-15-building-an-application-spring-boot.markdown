@@ -25,7 +25,7 @@ Most Spring Boot applications need very little Spring configuration.
 
 Spring Boot is compatible with Apache Maven 3.3 or above.
 
-Spring Boot dependencies use the `org.springframework.boot groupId`. Typically, your Maven POM file inherits from 
+Spring Boot dependencies use the `org.springframework.boot`. Typically, your Maven POM file inherits from 
 the `spring-boot-starter-parent` project and declares dependencies to one or more [Starters](https://docs.spring.io/spring-boot/docs/2.4.1/reference/html/using-spring-boot.html#using-boot-starter). 
 So the first thing is to include `spring-boot-starter-parent` to our project.
 
@@ -147,7 +147,7 @@ When invoked from a browser or using curl on the command line, the method return
 
 # Create an Application class
 
-First we will create a a `SpringBootStartApplication.java` class
+First we will create a `SpringBootStartApplication.java` class
 
 The final part of our application is to create a class `SpringBootStartApplication.java` with a `main` method. This is just a standard method that follows the Java convention 
 for an application entry point. 
@@ -199,7 +199,7 @@ Also you can build an executable jar and execute the application as follows:
 mvn package && java -jar target/spring-boot-start-0.0.1-SNAPSHOT.jar
 ```
 
-You should see in the logst the application is up and running in the port 8080.
+You should see in the logs the application is up and running in the port 8080.
 
 
 ![Screenshot 01](/assets/img/20210115springboot/screenshot01.png)

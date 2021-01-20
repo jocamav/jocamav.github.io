@@ -28,6 +28,8 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jc_martinezv
 github_username:  jocamav
 linkedin_username: jocamav
+disqus:
+  shortname: jocamav
 
 header_pages:
   - projects.markdown

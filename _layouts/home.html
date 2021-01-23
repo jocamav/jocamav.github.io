@@ -16,11 +16,11 @@ layout: default
     <div class="card  mb-4 card-hover">
         <div class="card-body">
             <div class="row">
-                <div class="col-2 px-4">
+                <div class="col-4 col-md-2 px-1">
                     {%- assign logoUrl = '/assets/logos/' | append: post.logo | append: '.svg'  -%}
                     <img src="{{ logoUrl | relative_url }}" alt="" class="img-fluid ">
                 </div>
-                <div class="col-10">
+                <div class="col-8 col-md-10">
                     <p class="card-text">
                         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
                         <span class="post-meta">{{ post.date | date: date_format }}</span>

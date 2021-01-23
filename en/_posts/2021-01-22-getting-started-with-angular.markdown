@@ -59,7 +59,7 @@ cd angular-getting-started
 ng serve --open
 ```
 
-The ng serve command launches the server, watches your files, and rebuilds the app as you make changes to those files.
+The `ng serve` command launches the server, watches your files, and rebuilds the app as you make changes to those files.
 
 The `--open` (or just -o) option automatically opens your browser to `http://localhost:4200/`.
 
@@ -220,7 +220,7 @@ students as a variable in the component and show the list depending on the conte
 
 > Usually this information should come from the server. But for the example we can mock the data directly in the component.
 
-No we need to change the template to bind the `li` elements to the array. We could do something like:
+Now we need to change the template to bind the `li` elements to the array. We could do something like:
 
 {% raw %}
 ```html

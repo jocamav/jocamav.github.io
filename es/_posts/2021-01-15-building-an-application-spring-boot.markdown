@@ -7,10 +7,11 @@ lang-ref: building-an-application-with-spring-boot
 date:   2021-01-15 14:38:12 +0100
 comments: true
 categories: [spring-boot]
+logo: spring
 ---
 
-# Introducción
 Spring Boot facilita mucho el trabajo para crear una aplicación basada en Spring de una manera muy sencilla sin apenas configuración.
+
 Esta es la introducción en la documentación oficial de Spring Boot:
 
 >Spring Boot hace fácil crear aplicaciones stand-alone listas para ejecutar en Producción. Tomamos una visión obstinada de la plataforma Spring 

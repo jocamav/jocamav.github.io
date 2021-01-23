@@ -16,7 +16,7 @@ layout: default
     <div class="card  mb-4 card-hover">
         <div class="card-body">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 px-4">
                     {%- assign logoUrl = '/assets/logos/' | append: post.logo | append: '.svg'  -%}
                     <img src="{{ logoUrl | relative_url }}" alt="" class="img-fluid ">
                 </div>
@@ -30,12 +30,16 @@ layout: default
                     </a>
 
                     </h3>
-                    {%- if site.show_excerpts -%}
-                    {{ post.excerpt }}
-                    {%- endif -%}
                     </p>
                 </div>
             </div>
+            {%- if site.show_excerpts -%}
+            <div class="row mt-1">
+                <div class="col-12">
+                    {{ post.excerpt }}
+                </div>
+            </div>
+            {%- endif -%}
         </div>
     </div>
         {%- endif -%}

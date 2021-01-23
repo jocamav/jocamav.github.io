@@ -1,8 +1,13 @@
 ---
 layout: post
-title:  "Getting Started with Angular"
-date:   2020-01-13 19:00:00 +0100
+title:  "Getting started with Angular"
+author:  "José Carlos Martínez"
+lang: en
+lang-ref: getting-started-with-angular
+date:   2021-01-21 14:38:12 +0100
+comments: true
 categories: [angular]
+logo: angular
 ---
 
 # Introduction
@@ -18,7 +23,8 @@ If you want to know more about it I totally recommend to follow the [Getting Sta
 
 * npm 6.13.4
 * node 12.13.1
-* Angular CLI 8.3.21
+* Angular CLI 10.0.8
+* Angular 10.0.9
 
 # Create new project
 
@@ -61,7 +67,7 @@ The `--open` (or just -o) option automatically opens your browser to `http://loc
 
 You can see the default app created by Angular.
 
-![Screenshot 01](/assets/20200113angular/screenshot01.png)
+![Screenshot 01](/assets/img/20210122angular/screenshot01.png)
 
 
 # Angular component
@@ -79,15 +85,15 @@ Let's start cleaning up the template to start showing only the title of the Appl
 to:
 
 {% highlight html %}
-
+{% raw %}
 <h1>{{ title }} app is running!</h1>
-
+{% endraw %}
 {% endhighlight %}
 
 Once we save it the changes should be displayed with no need of restarting the server. We should see only the title of 
 the application displayed in the browser now.
 
-![Screenshot 02](/assets/20200113angular/screenshot02.png)
+![Screenshot 02](/assets/img/20210122angular/screenshot02.png)
 
 The double curly braces are Angular's **interpolation binding syntax**. This interpolation binding presents the component's 
 title property value inside the HTML header tag. But how can we change the title of the application? Let's take a look to `app.component.ts`:
@@ -109,7 +115,7 @@ title = 'Cool Angular App';
 
 The browser should refresh and show the new title.
 
-![Screenshot 03](/assets/20200113angular/screenshot03.png)
+![Screenshot 03](/assets/img/20210122angular/screenshot03.png)
 
 Ok...it's not very fancy. But Angular allows as to define the styles for the components. Let's open `app.component.css`
 file and include these lines:
@@ -127,7 +133,7 @@ h1 {
 Now it looks a bit better with a neat blue color. 
 
 
-![Screenshot 04](/assets/20200113angular/screenshot04.png)
+![Screenshot 04](/assets/img/20210122angular/screenshot04.png)
 
 # Creating a new component
 
@@ -172,13 +178,15 @@ should use if we want to add our new component to other components. For example 
 we add `<app-student-list></app-student-list>` to the template of `AppComponent`.
 
 ```html
+{% raw %}
 <h1>{{ title }} app is running!</h1>
 <app-student-list></app-student-list>
+{% endraw %}
 ```
 
 We should see some message like `student-list works!` in the main page.
 
-![Screenshot 05](/assets/20200113angular/screenshot05.png)
+![Screenshot 05](/assets/img/20210122angular/screenshot05.png)
 
 Let's modify the template of the component to show something more interesting. Let's add a list of students for example.
 
@@ -194,7 +202,7 @@ Let's modify the template of the component to show something more interesting. L
 
 Now we should see the list displayed in the browser.
 
-![Screenshot 06](/assets/20200113angular/screenshot06.png)
+![Screenshot 06](/assets/img/20210122angular/screenshot06.png)
 
 # Using Directives
 
@@ -216,25 +224,29 @@ students as a variable in the component and show the list depending on the conte
 
 No we need to change the template to bind the `li` elements to the array. We could do something like:
 
+{% raw %}
 ```html
 <ul>
   <li>{{ students }}</li>
 </ul>
 ``` 
+{% endraw %}
 
 But now all the items are shown as one item of the list. Probably this is not the expected behaviour.
 
-![Screenshot 07](/assets/20200113angular/screenshot07.png)
+![Screenshot 07](/assets/img/20210122angular/screenshot07.png)
 
 To fix this issue  we can use one of the most common Angular directive. With `ngFor` we can iterate through the list of 
 students and add one `li` element per item.
 
+{% raw %}
 ```html
 <ul>
   <li *ngFor="let student of students">{{ student }}</li>
 </ul>
 
 ``` 
+{% endraw %}
 
 > Don't forget the asterisk (*) in front of ngFor. It's a critical part of the syntax.
 
@@ -260,7 +272,7 @@ the [Angular Tour of Heroes Tutorial][angular-tutorial].
 
 ```
 git clone https://github.com/jocamav/tutorials.git
-cd angular-getting-started
+cd tutorials/angular-getting-started
 npm install
 ng serve -o
 ```

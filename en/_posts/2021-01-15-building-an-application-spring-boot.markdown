@@ -7,12 +7,13 @@ lang-ref: building-an-application-with-spring-boot
 date:   2021-01-15 14:38:12 +0100
 comments: true
 categories: [spring-boot]
+logo: spring
 ---
 
 # Introduction
 Spring Boot can help you a lot to create Spring based application in a very simple way with almost no configuration. According 
 the official documentation of Spring Boot:
-
+<!--excerpt-->
 >Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can run. 
 We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss. 
 Most Spring Boot applications need very little Spring configuration.

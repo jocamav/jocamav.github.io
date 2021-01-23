@@ -34,9 +34,9 @@ disqus:
 header_pages:
   - projects.markdown
   - about.markdown
-
 lang: en
 languages: ["en", "es"]
+show_excerpts: true
 # permalink: /:categories/:year/:month/:day/:title/
 
 # Build settings

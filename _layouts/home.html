@@ -11,24 +11,36 @@ layout: default
 
     {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
         {%- for post in site.posts -%}
         {%- if post.lang == page.lang -%}
-        <li>
-            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-            <span class="post-meta">{{ post.date | date: date_format }}</span>
-            <h3>
-                <a class="post-link" href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                </a>
-            </h3>
-            {%- if site.show_excerpts -%}
-            {{ post.excerpt }}
-            {%- endif -%}
-        </li>
+    <div class="card  mb-4 card-hover">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-2">
+                    {%- assign logoUrl = '/assets/logos/' | append: post.logo | append: '.svg'  -%}
+                    <img src="{{ logoUrl | relative_url }}" alt="" class="img-fluid ">
+                </div>
+                <div class="col-10">
+                    <p class="card-text">
+                        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                        <span class="post-meta">{{ post.date | date: date_format }}</span>
+                    <h3></h3>
+                    <a class="post-link" href="{{ post.url | relative_url }}">
+                        {{ post.title | escape }}
+                    </a>
+
+                    </h3>
+                    {%- if site.show_excerpts -%}
+                    {{ post.excerpt }}
+                    {%- endif -%}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
         {%- endif -%}
         {%- endfor -%}
-    </ul>
+
 
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
     {%- endif -%}

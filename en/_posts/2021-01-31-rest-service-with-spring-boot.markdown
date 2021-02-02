@@ -23,6 +23,7 @@ service in a couple of minutes.
 To create a REST API you'll need to include Spring MVC to your project. Let's start creating a Spring Boot project including 
 the dependency `spring-boot-starter-web`in our `pom.xml`. 
 
+
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -125,6 +126,9 @@ The next step is to create a REST Controller. A REST Controller is a normal Cont
 `@RestController`. `@RestController` is a composed annotation that is itself meta-annotated with `@Controller` 
 and `@ResponseBody`. `@ResponseBody` tells Spring the response should be converted directly (using Jackson in our case) 
 **instead looking for a view in order to render a HTML template**.
+
+
+![Screenshot 01](/assets/img/20210131springbootrest/screenshot01.png)
 
 > Annotate a class with `@RestController` has the same behaviour than including both annotations `@Controller` `@ResponseBody`
 >in the Controller class.

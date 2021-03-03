@@ -618,7 +618,7 @@ In this article we saw:
 # Source Code
 
 ![Github Logo][github-logo]
-[GitHub Project](https://github.com/jocamav/tutorials/tree/master/spring-boot-rest-start)
+[GitHub Project](https://github.com/jocamav/tutorials/tree/master/spring-boot-rest-http-methods)
 
 ```
 git clone https://github.com/jocamav/tutorials.git
